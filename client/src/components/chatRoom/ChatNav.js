@@ -2,8 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/chat-nav.css';
+import { useNavigate } from 'react-router-dom';
 
-export default function ChatNav() {
+export default function ChatNav({ user, setRoom }) {
+  let navigate = useNavigate();
+  if (!user) {
+    navigate('/login');
+  }
   const [rooms, setRooms] = useState(null);
   (async () => {
     try {
@@ -12,8 +17,14 @@ export default function ChatNav() {
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjM4NTYwMjU3fQ.qStAH1AQwiA4m8PAeXFk99hFm5aLcF0f6Yt5NV6wyUs',
       });
       const navUl = response.data.map((room) => (
-        <li key={room} className='chat-link'>
-          <Link to={`/${room.toLowerCase()}`}>{room}</Link>
+        <li
+          key={room}
+          className='chat-link'
+          onClick={() => {
+            navigate(`/${room}`);
+          }}
+        >
+          {room}
         </li>
       ));
       setRooms(navUl);

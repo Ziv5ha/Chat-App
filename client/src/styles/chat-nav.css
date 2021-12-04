@@ -4,7 +4,7 @@
   /* max-width: 0; */
   max-width: 15vw;
   min-width: 15vw;
-  background-color: rgb(65, 245, 95);
+  background-color: #f7a440;
   position: absolute;
   padding: 5vh 0 0 0;
   top: 0;
@@ -16,16 +16,13 @@
 .chat-link {
   text-decoration: none;
   padding: 1em;
-  width: 100%;
-  background-color: cornflowerblue;
+  /* width: 1em; */
+  background-color: #e1701a;
   list-style: none;
   cursor: pointer;
   transition: all 0.3s;
+  color: black;
 }
 .chat-link:hover {
-  background-color: rgb(120, 161, 236);
-}
-.chat-link a {
-  text-decoration: none;
-  color: black;
+  background-color: #e27624;
 }
