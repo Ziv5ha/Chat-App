@@ -1,0 +1,8 @@
+.app {
+  width: 70%;
+  max-width: 35em;
+  min-width: 25em;
+  height: 80vh;
+  margin: 6% auto 0 auto;
+  background-color: firebrick;
+}

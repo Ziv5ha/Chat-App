@@ -1,0 +1,31 @@
+.nav {
+  height: 95%;
+  width: auto;
+  /* max-width: 0; */
+  max-width: 15vw;
+  min-width: 15vw;
+  background-color: rgb(65, 245, 95);
+  position: absolute;
+  padding: 5vh 0 0 0;
+  top: 0;
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.chat-link {
+  text-decoration: none;
+  padding: 1em;
+  width: 100%;
+  background-color: cornflowerblue;
+  list-style: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.chat-link:hover {
+  background-color: rgb(120, 161, 236);
+}
+.chat-link a {
+  text-decoration: none;
+  color: black;
+}
