@@ -1,15 +1,17 @@
-import React from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
+import LoginDiv from './loginSection';
+import RegisterDiv from './registerSection';
+import Toggle from './Toggle';
+import '../../styles/login/page.css';
 
-export default function LoginPage() {
+export default function LoginPage({ setUser }) {
+  const toggleBtnRef = useRef(null);
+
   return (
-    <form>
-      <input
-        type='text'
-        placeholder='Enter Username'
-        className='login-u-input'
-      ></input>
-      <button className='login-btn'>Log in</button>
-    </form>
+    <div className='log-reg'>
+      <LoginDiv setUser={setUser} />
+      <RegisterDiv setUser={setUser} toggleBtnRef={toggleBtnRef} />
+      <Toggle toggleBtnRef={toggleBtnRef} />
+    </div>
   );
 }
