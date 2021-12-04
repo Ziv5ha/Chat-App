@@ -50,9 +50,13 @@ router.get('/:room', (req, res, next) => {
 
     setInterval(() => {
       const chatroom = ChatRooms.find(({ name }) => name === room);
-      if (!chatroom) res.status(404).send('Chat room not found');
-      let data = JSON.stringify(chatroom.msgs);
-      res.write(`data: ${data}\n\n`);
+      if (!chatroom) {
+        res.status(404).send('Chat room not found');
+        res.end();
+      } else {
+        let data = JSON.stringify(chatroom.msgs);
+        res.write(`data: ${data}\n\n`);
+      }
     }, 3000);
   } catch (error) {
     console.log(error);
