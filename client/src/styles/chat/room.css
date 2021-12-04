@@ -1,0 +1,30 @@
+.chat {
+  width: 95%;
+  height: 90%;
+  background-color: white;
+  border-radius: 0.5em;
+  padding: 0.3em;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.msg-container {
+  margin-top: 0.3em;
+  padding: 0.2em;
+  background-color: #f6dcbf;
+  min-width: 30%;
+  max-width: 70%;
+  border-radius: 0.2em;
+}
+.sentByUser {
+  background-color: #f7a440;
+  align-self: flex-end;
+}
+.sender {
+  color: rgb(58, 58, 58);
+  font-size: 0.7em;
+}
+.msg {
+  margin-left: 0.2em;
+}

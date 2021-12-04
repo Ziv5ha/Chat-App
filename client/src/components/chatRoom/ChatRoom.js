@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import SendMsg from './SendMsg';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ChatNav from './ChatNav';
+import '../../styles/chat/room.css';
 
-export default function ChatRoom() {
+export default function ChatRoom({ user }) {
   const [msgs, setMsgs] = useState(null);
   let params = useParams();
   const { chatRoom } = params;
@@ -12,11 +14,14 @@ export default function ChatRoom() {
   response.onmessage = ({ data }) => {
     const rawMsgs = JSON.parse(data);
     const msgsList = rawMsgs.map((msg, i) => {
-      const user = 'admin';
       return (
         <div
           key={i}
-          className={msg.sender.includes(user) ? 'msg' : 'msg sentByUser'}
+          className={
+            msg.sender.includes(user)
+              ? 'msg-container sentByUser'
+              : 'msg-container'
+          }
         >
           <div className='sender'>{msg.sender}</div>
           <div className='msg'>{msg.msg}</div>
@@ -27,9 +32,10 @@ export default function ChatRoom() {
   };
 
   return (
-    <div>
-      <div>{msgs}</div>
-      <SendMsg />
+    <div className='app'>
+      <ChatNav user={user} />
+      <div className='chat'>{msgs}</div>
+      <SendMsg user={user} />
     </div>
   );
 }
