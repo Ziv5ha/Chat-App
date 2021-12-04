@@ -24,7 +24,7 @@ app.use(express.json());
 //// app.use('/auth', authRouter);
 
 app.use('/user', userRouter);
-app.use(auth);
+// app.use(auth);
 app.use('/chat', chatRouter);
 app.use(errorHandler);
 

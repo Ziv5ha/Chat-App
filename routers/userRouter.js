@@ -8,9 +8,9 @@ const User = require('../models/userModel');
 router.post('/register', async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    testUsername(username);
+    await testUsername(username);
     const hashedPassword = await bcrypt.hash(password, 10);
-    User.insertMany({ username, password: hashedPassword });
+    await User.insertMany({ username, password: hashedPassword });
     res.status(201).send('Register Success');
   } catch (error) {
     //   res.status(500).send();
@@ -21,13 +21,16 @@ router.post('/register', async (req, res, next) => {
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = User.findOne((user) => user.username === username);
+  const user = await User.findOne({ username }).exec();
   if (!user) {
     res.status(404).send('cannot find user');
   }
   try {
     if (await bcrypt.compare(password, user.password)) {
-      const accessToken = jwt.sign({ name: user.name }, process.env.SECRET); //, {
+      const accessToken = jwt.sign(
+        { username: user.username },
+        process.env.SECRET
+      ); //, {
       //     expiresIn: '10s',
       //   });
       //   const refreshToken = jwt.sign({ name: user.name }, secret);
@@ -46,7 +49,7 @@ router.post('/login', async (req, res) => {
 });
 
 async function testUsername(name) {
-  const exsistingUser = await User.find(({ username }) => username === name);
+  const exsistingUser = await User.find({ username: name });
   if (exsistingUser.length > 0) throw 409;
 }
 

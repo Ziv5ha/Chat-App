@@ -1,4 +1,5 @@
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 function auth(req, res, next) {
   const { authorization } = req.headers;
   if (!authorization) {
@@ -8,6 +9,7 @@ function auth(req, res, next) {
   }
   try {
     const token = authorization.split(' ')[1];
+    console.log(token);
     const user = jwt.verify(token, process.env.SECRET);
     next();
   } catch (error) {
