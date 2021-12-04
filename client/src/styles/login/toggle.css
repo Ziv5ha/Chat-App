@@ -1,0 +1,25 @@
+.register-login-toggle {
+  background-color: #f7a440;
+  border-radius: 0.5em;
+  text-align: center;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  transition: all 0.7s;
+}
+.show-register {
+  grid-column-start: 1;
+}
+.register-login-toggle button {
+  border: none;
+  width: 10em;
+  height: 3em;
+  border-radius: 1em;
+  margin-top: 10em;
+  background-color: #e1701a;
+  box-shadow: 0 0 10px 3px #ec7f2c;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.register-login-toggle button:hover {
+  background-color: #e27521;
+}

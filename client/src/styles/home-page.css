@@ -1,0 +1,10 @@
+.app {
+  width: 70%;
+  max-width: 35em;
+  min-width: 25em;
+  height: 80vh;
+  margin: 6% 20% 0 20%;
+  border-radius: 0.8em;
+  padding: 1em;
+  background-color: #f6dcbf;
+}
